@@ -10,6 +10,7 @@
  */
 
 function init() {
+  try { initAssetVerification(); } catch(e) { console.warn(e); }
   try { initNav(); } catch(e) { console.warn(e); }
   try { initGraphCanvas(); } catch(e) { console.warn(e); }
   try { initCursorGlow(); } catch(e) { console.warn(e); }
@@ -18,6 +19,22 @@ function init() {
   try { initAIChat(); } catch(e) { console.warn(e); }
   try { initContactForm(); } catch(e) { console.warn(e); }
   try { initScrollReveal(); } catch(e) { console.warn(e); }
+}
+
+function initAssetVerification() {
+  if (typeof window !== 'undefined' && window.BUSINESS_GRAPH_ASSETS) {
+    document.querySelectorAll('img').forEach(function(img) {
+      const src = img.getAttribute('src');
+      if (src && window.BUSINESS_GRAPH_ASSETS[src]) {
+        img.addEventListener('error', function() {
+          this.src = window.BUSINESS_GRAPH_ASSETS[src];
+        });
+        if (img.complete && (img.naturalWidth === 0 || img.naturalHeight === 0)) {
+          img.src = window.BUSINESS_GRAPH_ASSETS[src];
+        }
+      }
+    });
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -362,29 +379,50 @@ function init3DTilt() {
   const holoStage = document.getElementById('holoStage');
   const dashCard = document.getElementById('dashCard');
 
-  // Generic 3D tilt with specular light reflection
+  // Generic 3D tilt with multi-layered parallax depth and specular reflection
   tiltCards.forEach(card => {
     const glare = card.querySelector('.card-glare');
+    const photoStage = card.querySelector('.team-photo-stage');
+    const reticle = card.querySelector('.hud-reticle');
+    const telem = card.querySelector('.photo-telemetry');
+    const statusTag = card.querySelector('.team-status-tag');
+
     card.addEventListener('mousemove', e => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
+      const rotateX = ((y - centerY) / centerY) * -10;
+      const rotateY = ((x - centerX) / centerX) * 10;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      card.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
 
       if (glare) {
         glare.style.opacity = '1';
-        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.16) 0%, transparent 60%)`;
+        glare.style.background = `radial-gradient(circle 240px at ${x}px ${y}px, rgba(255, 255, 255, 0.18) 0%, transparent 65%)`;
+      }
+      if (reticle) {
+        reticle.style.transform = `translateZ(46px) translate(${rotateY * 0.8}px, ${-rotateX * 0.8}px) scale(1.15)`;
+      }
+      if (photoStage) {
+        photoStage.style.transform = `translateZ(38px)`;
+      }
+      if (statusTag) {
+        statusTag.style.transform = `translateZ(60px) translate(${rotateY * 0.5}px, ${-rotateX * 0.5}px)`;
+      }
+      if (telem) {
+        telem.style.transform = `translateZ(42px) translate(${rotateY * 0.4}px, 0px)`;
       }
     });
 
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
       if (glare) glare.style.opacity = '0';
+      if (reticle) reticle.style.transform = '';
+      if (photoStage) photoStage.style.transform = '';
+      if (statusTag) statusTag.style.transform = '';
+      if (telem) telem.style.transform = '';
     });
   });
 

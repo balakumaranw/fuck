@@ -11,6 +11,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script src="assets-data.js"></script>
+  <script>
+    /* Immediate asset hydration fallback for Vercel / zero-asset deployments */
+    window.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG' && window.BUSINESS_GRAPH_ASSETS) {
+        var raw = e.target.getAttribute('src');
+        if (raw && window.BUSINESS_GRAPH_ASSETS[raw]) {
+          e.target.src = window.BUSINESS_GRAPH_ASSETS[raw];
+        }
+      }
+    }, true);
+  </script>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -469,11 +481,22 @@
               <div class="photo-glow gold-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/balakumaran.jpg" alt="Balakumaran — Founder" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">ARCHITECT // 99.8%</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag gold-tag">
                 <span class="tag-ping gold-ping"></span>
@@ -502,11 +525,22 @@
               <div class="photo-glow gold-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/nagaraj.jpg" alt="Nagaraj — Co-Founder" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">INFRA LEAD // 99.9%</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag gold-tag">
                 <span class="tag-ping gold-ping"></span>
@@ -543,11 +577,22 @@
               <div class="photo-glow cyan-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/dharaneshwaran.jpg" alt="M. Dharaneshwaran — Partner" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">UI/UX // 60 FPS</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag cyan-tag">
                 <span class="tag-ping cyan-ping"></span>
@@ -574,11 +619,22 @@
               <div class="photo-glow cyan-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/kavin.jpg" alt="K.S. Kavin — Partner" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">AI BOT // ACTIVE</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag cyan-tag">
                 <span class="tag-ping cyan-ping"></span>
@@ -605,11 +661,22 @@
               <div class="photo-glow cyan-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/vetrivel.jpg" alt="S. Vetrivel — Partner" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">META ADS // HIGH ROI</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag cyan-tag">
                 <span class="tag-ping cyan-ping"></span>
@@ -636,11 +703,22 @@
               <div class="photo-glow cyan-glow" aria-hidden="true"></div>
               <div class="photo-frame">
                 <img src="assets/team/barath.jpg" alt="J. Barath — Partner" class="team-photo" />
+                <div class="holo-laser-beam" aria-hidden="true"></div>
+                <div class="holo-scanlines" aria-hidden="true"></div>
+                <div class="holo-prism-shimmer" aria-hidden="true"></div>
+                <div class="hud-reticle" aria-hidden="true">
+                  <span class="hud-reticle-ring"></span>
+                  <span class="hud-crosshair"></span>
+                </div>
                 <div class="photo-overlay"></div>
                 <span class="cyber-corner tl"></span>
                 <span class="cyber-corner tr"></span>
                 <span class="cyber-corner bl"></span>
                 <span class="cyber-corner br"></span>
+                <div class="photo-telemetry" aria-hidden="true">
+                  <span class="telem-chip">DATA // REAL-TIME</span>
+                  <span class="telem-bars"><i class="tb"></i><i class="tb"></i><i class="tb"></i><i class="tb"></i></span>
+                </div>
               </div>
               <div class="team-status-tag cyan-tag">
                 <span class="tag-ping cyan-ping"></span>

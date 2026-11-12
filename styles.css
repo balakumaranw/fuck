@@ -1862,15 +1862,167 @@ main {
 }
 
 .team-card:hover .team-photo {
-  transform: scale(1.06);
-  filter: contrast(1.08) brightness(1.04);
+  transform: scale(1.08) translateZ(12px);
+  filter: contrast(1.1) brightness(1.06);
+}
+
+/* Holographic 3D Laser Scanner Beam */
+.holo-laser-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.85;
+  animation: holoLaserSweep 4s ease-in-out infinite;
+}
+
+.team-card-executive .holo-laser-beam {
+  background: linear-gradient(90deg, transparent 4%, rgba(240, 190, 66, 0.4) 18%, #ffd768 50%, rgba(240, 190, 66, 0.4) 82%, transparent 96%);
+  box-shadow: 0 0 14px rgba(240, 190, 66, 0.85), 0 0 28px rgba(240, 190, 66, 0.45);
+}
+
+.team-card:not(.team-card-executive) .holo-laser-beam {
+  background: linear-gradient(90deg, transparent 4%, rgba(57, 217, 237, 0.4) 18%, #7bf0ff 50%, rgba(57, 217, 237, 0.4) 82%, transparent 96%);
+  box-shadow: 0 0 14px rgba(57, 217, 237, 0.85), 0 0 28px rgba(57, 217, 237, 0.45);
+}
+
+@keyframes holoLaserSweep {
+  0% {
+    top: 2%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.95;
+  }
+  88% {
+    opacity: 0.95;
+  }
+  100% {
+    top: 98%;
+    opacity: 0;
+  }
+}
+
+/* Holographic Scanline Texture */
+.holo-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.32) 3px,
+    rgba(0, 0, 0, 0.32) 4px
+  );
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0.55;
+  mix-blend-mode: overlay;
+}
+
+/* Holographic Prism Light Reflection */
+.holo-prism-shimmer {
+  position: absolute;
+  inset: -60% -60%;
+  width: 220%;
+  height: 220%;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    rgba(57, 217, 237, 0.08) 46%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(240, 190, 66, 0.12) 54%,
+    transparent 64%
+  );
+  transform: rotate(22deg) translateY(-120%);
+  pointer-events: none;
+  z-index: 7;
+  animation: holoPrismPass 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes holoPrismPass {
+  0%, 25% {
+    transform: rotate(22deg) translateY(-130%);
+  }
+  65%, 100% {
+    transform: rotate(22deg) translateY(130%);
+  }
+}
+
+/* Cyber HUD Reticle & Crosshair */
+.hud-reticle {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  z-index: 8;
+  opacity: 0.75;
+  transform: translateZ(36px);
+  transition: all 0.4s ease;
+}
+
+.hud-reticle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(57, 217, 237, 0.65);
+  animation: hudRingSpin 12s linear infinite;
+}
+
+.team-card-executive .hud-reticle-ring {
+  border-color: rgba(240, 190, 66, 0.75);
+}
+
+.hud-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+}
+
+.hud-crosshair::before,
+.hud-crosshair::after {
+  content: '';
+  position: absolute;
+  background: var(--cyan);
+}
+
+.team-card-executive .hud-crosshair::before,
+.team-card-executive .hud-crosshair::after {
+  background: var(--gold);
+}
+
+.hud-crosshair::before {
+  top: 3.5px;
+  left: 0;
+  width: 8px;
+  height: 1px;
+}
+
+.hud-crosshair::after {
+  top: 0;
+  left: 3.5px;
+  width: 1px;
+  height: 8px;
+}
+
+@keyframes hudRingSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(9, 15, 27, 0.9) 0%, rgba(9, 15, 27, 0.2) 40%, transparent 70%);
+  background: linear-gradient(to top, rgba(9, 15, 27, 0.92) 0%, rgba(9, 15, 27, 0.25) 45%, transparent 75%);
   pointer-events: none;
+  z-index: 4;
 }
 
 /* Cyber Corner Brackets */
@@ -1879,23 +2031,89 @@ main {
   width: 8px;
   height: 8px;
   pointer-events: none;
-  transition: all 0.3s ease;
-  opacity: 0.6;
+  transition: all 0.35s ease;
+  opacity: 0.65;
+  z-index: 8;
 }
 
 .team-card:hover .cyber-corner {
   opacity: 1;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
 }
 
-.cyber-corner.tl { top: 6px; left: 6px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
-.cyber-corner.tr { top: 6px; right: 6px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
-.cyber-corner.bl { bottom: 6px; left: 6px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
-.cyber-corner.br { bottom: 6px; right: 6px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+.cyber-corner.tl { top: 7px; left: 7px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.cyber-corner.tr { top: 7px; right: 7px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+.cyber-corner.bl { bottom: 7px; left: 7px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.cyber-corner.br { bottom: 7px; right: 7px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
 
 .team-card-executive .cyber-corner {
   border-color: var(--gold) !important;
+}
+
+/* Bottom Telemetry HUD Line */
+.photo-telemetry {
+  position: absolute;
+  bottom: 12px;
+  left: 14px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font);
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  z-index: 8;
+  pointer-events: none;
+  transform: translateZ(32px);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  transition: transform 0.4s ease;
+}
+
+.telem-chip {
+  padding: 2.5px 7px;
+  background: rgba(9, 15, 27, 0.82);
+  border: 1px solid rgba(57, 217, 237, 0.32);
+  border-radius: 4px;
+  color: var(--cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.team-card-executive .telem-chip {
+  border-color: rgba(240, 190, 66, 0.4);
+  color: var(--gold-bright);
+}
+
+.telem-bars {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.telem-bars .tb {
+  width: 3px;
+  height: 9px;
+  background: var(--cyan);
+  border-radius: 1px;
+  opacity: 0.8;
+  animation: barPulse 1.8s ease-in-out infinite alternate;
+}
+
+.team-card-executive .telem-bars .tb {
+  background: var(--gold);
+}
+
+.telem-bars .tb:nth-child(2) { height: 13px; animation-delay: 0.3s; }
+.telem-bars .tb:nth-child(3) { height: 7px; animation-delay: 0.6s; }
+.telem-bars .tb:nth-child(4) { height: 11px; animation-delay: 0.9s; }
+
+@keyframes barPulse {
+  from { transform: scaleY(0.6); opacity: 0.5; }
+  to { transform: scaleY(1.15); opacity: 1; }
 }
 
 /* Floating Status / Role Pill on Photo */
@@ -1945,6 +2163,29 @@ main {
   background: var(--cyan);
   box-shadow: 0 0 8px var(--cyan);
   animation: pulseBeacon 2s infinite ease-in-out;
+}
+
+/* 3D Depth Layering on Hover */
+.team-card:hover .team-photo-stage {
+  transform: translateZ(38px);
+}
+
+.team-card:hover .team-status-tag {
+  transform: translateZ(58px) scale(1.04);
+}
+
+.team-card:hover .hud-reticle {
+  transform: translateZ(48px) scale(1.15);
+  opacity: 1;
+}
+
+.team-card:hover .photo-telemetry {
+  transform: translateZ(44px);
+}
+
+.team-card:hover .holo-laser-beam {
+  opacity: 1;
+  filter: brightness(1.25);
 }
 
 /* Team Text Info */
