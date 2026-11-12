@@ -102,6 +102,15 @@ function initGraphCanvas() {
   const canvas = document.getElementById('graphCanvas');
   if (!canvas) return;
 
+  // Hide background canvas on mobile — improves performance & prevents touch conflicts
+  if (window.innerWidth < 1024 || ('ontouchstart' in window)) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  // On white theme — make canvas very subtle
+  canvas.style.opacity = '0.12';
+
   const ctx = canvas.getContext('2d');
   let width, height;
   let animationFrameId;
@@ -376,6 +385,18 @@ function initCursorGlow() {
    ========================================================================== */
 
 function init3DTilt() {
+  // Disable ALL tilt on touch/mobile devices — prevents drag issues
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 1024);
+  if (isTouchDevice) {
+    // On mobile: remove data-tilt attributes and reset any transforms
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+      el.removeAttribute('data-tilt');
+      el.style.transform = '';
+      el.style.willChange = 'auto';
+    });
+    return; // Exit — no tilt on mobile
+  }
+
   const tiltCards = document.querySelectorAll('[data-tilt]');
   const holoStage = document.getElementById('holoStage');
   const dashCard = document.getElementById('dashCard');
