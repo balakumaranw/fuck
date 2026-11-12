@@ -13,6 +13,7 @@ function init() {
   try { initAssetVerification(); } catch(e) { console.warn(e); }
   try { initNav(); } catch(e) { console.warn(e); }
   try { initGraphCanvas(); } catch(e) { console.warn(e); }
+  try { initFrontNeuralStream(); } catch(e) { console.warn(e); }
   try { initCursorGlow(); } catch(e) { console.warn(e); }
   try { init3DTilt(); } catch(e) { console.warn(e); }
   try { initCounters(); } catch(e) { console.warn(e); }
@@ -689,10 +690,10 @@ ${message}
 Submitted via Business Graph Interactive Web Portal.`
     );
 
-    const recipient = 'hello@businessgraph.in';
+    const recipient = 'balaoldmaster@gmail.com';
     if (status) {
-      status.textContent = 'Preparing email dispatch... Opening your default email client with project parameters.';
-      status.style.color = '#39d9ed';
+      status.textContent = 'Preparing email dispatch to balaoldmaster@gmail.com... Launching your email client with full project parameters.';
+      status.style.color = '#00f0ff';
     }
 
     setTimeout(() => {
@@ -737,4 +738,182 @@ function initScrollReveal() {
 
   // Safety fallback: ensure nothing stays hidden after 600ms
   setTimeout(showAll, 600);
+}
+
+/* ==========================================================================
+   9. FRONT NEURAL STREAM 3D VIDEO CANVAS ENGINE
+   ========================================================================== */
+
+function initFrontNeuralStream() {
+  const canvas = document.getElementById('frontNeuralStreamCanvas');
+  const toggleBtn = document.getElementById('streamToggleBtn');
+  const timecodeEl = document.getElementById('videoTimecode');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let isPlaying = true;
+  let animId = null;
+  let width, height;
+  let dpr = window.devicePixelRatio || 1;
+  let mouse = { x: 0, y: 0 };
+  let startMs = Date.now();
+
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    width = rect.width;
+    height = rect.height;
+    if (width === 0 || height === 0) return;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Mouse interactivity on video stage
+  canvas.parentElement.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = (e.clientX - rect.left) / width - 0.5;
+    mouse.y = (e.clientY - rect.top) / height - 0.5;
+  });
+
+  // Toggle button
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      isPlaying = !isPlaying;
+      toggleBtn.textContent = isPlaying ? '❚❚ PAUSE STREAM' : '▶ RESUME STREAM';
+      if (isPlaying) loop();
+      else cancelAnimationFrame(animId);
+    });
+  }
+
+  // 3D Cyber Warp Particle and Ring System
+  const numRings = 14;
+  const numStars = 65;
+  const stars = [];
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: (Math.random() - 0.5) * 800,
+      y: (Math.random() - 0.5) * 500,
+      z: Math.random() * 1000 + 50,
+      color: Math.random() > 0.4 ? '#00f0ff' : '#ffd768',
+      size: Math.random() * 2 + 1
+    });
+  }
+
+  let angle = 0;
+
+  function loop() {
+    if (!isPlaying) return;
+    animId = requestAnimationFrame(loop);
+
+    if (canvas.width === 0 || canvas.height === 0) resize();
+
+    angle += 0.015;
+    const elapsed = Date.now() - startMs;
+
+    // Update real-time military timecode
+    if (timecodeEl) {
+      const minutes = Math.floor(elapsed / 60000).toString().padStart(2, '0');
+      const seconds = Math.floor((elapsed % 60000) / 1000).toString().padStart(2, '0');
+      const ms2 = Math.floor((elapsed % 1000) / 10).toString().padStart(2, '0');
+      timecodeEl.textContent = `00:${minutes}:${seconds}:${ms2}`;
+    }
+
+    // Clean background with motion trails
+    ctx.fillStyle = 'rgba(2, 5, 11, 0.28)';
+    ctx.fillRect(0, 0, width, height);
+
+    const cx = width / 2 + mouse.x * 60;
+    const cy = height / 2 + mouse.y * 40;
+    const fov = 320;
+
+    // 1. Draw 3D Tunnel Concentric Cyber Rings
+    for (let r = 0; r < numRings; r++) {
+      const ringZ = ((r * 80 - (angle * 60)) % 1000 + 1000) % 1000 + 30;
+      const scale = fov / (fov + ringZ);
+      const radiusX = (180 + r * 16) * scale;
+      const radiusY = (110 + r * 10) * scale;
+
+      const ringAlpha = Math.min(1, Math.max(0, 1 - ringZ / 950));
+      const isGold = r % 3 === 0;
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, radiusX, radiusY, (angle * 0.2) + r * 0.1, 0, Math.PI * 2);
+      ctx.strokeStyle = isGold 
+        ? `rgba(255, 215, 104, ${ringAlpha * 0.55})` 
+        : `rgba(0, 240, 255, ${ringAlpha * 0.65})`;
+      ctx.lineWidth = Math.max(1, 2.5 * scale);
+      ctx.shadowBlur = 12 * scale;
+      ctx.shadowColor = isGold ? '#ffd768' : '#00f0ff';
+      ctx.stroke();
+
+      // Cyber Ticks on Ring
+      const numTicks = 8;
+      for (let t = 0; t < numTicks; t++) {
+        const tickAng = (t * (Math.PI * 2 / numTicks)) + angle * (r % 2 ? 0.3 : -0.3);
+        const tx = cx + Math.cos(tickAng) * radiusX;
+        const ty = cy + Math.sin(tickAng) * radiusY;
+        ctx.fillStyle = isGold ? '#ffd768' : '#00f0ff';
+        ctx.beginPath();
+        ctx.arc(tx, ty, Math.max(1.2, 2.8 * scale), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    // 2. Draw Traveling Warp Particles
+    ctx.save();
+    for (let s = 0; s < stars.length; s++) {
+      const star = stars[s];
+      star.z -= 4.5;
+      if (star.z <= 10) {
+        star.z = 1000;
+        star.x = (Math.random() - 0.5) * 900;
+        star.y = (Math.random() - 0.5) * 550;
+      }
+
+      const pScale = fov / (fov + star.z);
+      const px = cx + star.x * pScale;
+      const py = cy + star.y * pScale;
+
+      if (px >= 0 && px <= width && py >= 0 && py <= height) {
+        const pAlpha = Math.min(1, (1000 - star.z) / 800);
+        ctx.fillStyle = star.color;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = star.color;
+        ctx.beginPath();
+        ctx.arc(px, py, star.size * pScale * 1.8, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Warp Streak Tail
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(px + (px - cx) * 0.08, py + (py - cy) * 0.08);
+        ctx.strokeStyle = star.color;
+        ctx.lineWidth = 1 * pScale;
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+
+    // 3. Central Pulsing Core Energy Orb
+    const corePulse = Math.sin(angle * 3) * 0.2 + 0.8;
+    ctx.save();
+    const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 65 * corePulse);
+    grad.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+    grad.addColorStop(0.3, 'rgba(0, 240, 255, 0.6)');
+    grad.addColorStop(0.7, 'rgba(255, 215, 104, 0.25)');
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 65 * corePulse, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  loop();
 }

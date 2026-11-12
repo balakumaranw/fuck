@@ -4,32 +4,36 @@
    ========================================================================== */
 
 :root {
-  --bg: #070b14;
-  --bg-surface: #0b1220;
-  --bg-surface-elevated: #101a2e;
-  --panel: rgba(13, 21, 37, 0.72);
-  --panel-border: rgba(57, 217, 237, 0.16);
-  --panel-border-hover: rgba(57, 217, 237, 0.42);
-  --panel-glass: rgba(16, 26, 44, 0.65);
+  --bg: #050811;
+  --bg-surface: #0a0f1d;
+  --bg-surface-elevated: #0f172a;
+  --panel: rgba(11, 18, 34, 0.76);
+  --panel-border: rgba(0, 240, 255, 0.18);
+  --panel-border-hover: rgba(0, 240, 255, 0.48);
+  --panel-glass: rgba(14, 23, 42, 0.72);
   
-  --text: #f3f7fb;
-  --text-dim: #c5d3e2;
-  --muted: #8b9eb5;
+  --text: #f8fafc;
+  --text-dim: #cbd5e1;
+  --muted: #94a3b8;
   
-  --cyan: #39d9ed;
-  --cyan-bright: #68edfd;
-  --cyan-glow: rgba(57, 217, 237, 0.35);
+  --cyan: #00f0ff;
+  --cyan-bright: #7bf7ff;
+  --cyan-deep: #00b4d8;
+  --cyan-glow: rgba(0, 240, 255, 0.45);
   
-  --gold: #f0be42;
-  --gold-bright: #fde076;
-  --gold-dark: #b88612;
-  --gold-glow: rgba(240, 190, 66, 0.35);
+  --gold: #ffd768;
+  --gold-bright: #fff3c4;
+  --gold-dark: #d99a16;
+  --gold-glow: rgba(255, 215, 104, 0.45);
 
-  --blue-accent: #3a82f6;
-  --purple-accent: #8b5cf6;
+  --whatsapp: #25d366;
+  --whatsapp-glow: rgba(37, 211, 102, 0.4);
+
+  --blue-accent: #38bdf8;
+  --purple-accent: #a855f7;
   
-  --line: rgba(164, 190, 220, 0.12);
-  --line-strong: rgba(164, 190, 220, 0.22);
+  --line: rgba(148, 163, 184, 0.14);
+  --line-strong: rgba(148, 163, 184, 0.28);
   
   --font: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -458,11 +462,19 @@ main {
 }
 
 .gradient-text {
-  background: linear-gradient(110deg, #48e2ef 0%, #76adff 45%, #fce289 80%, #f0be42 100%);
+  background: linear-gradient(115deg, #00f0ff 0%, #38bdf8 30%, #ffd768 70%, #fff3c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 0 35px rgba(57, 217, 237, 0.2));
+  filter: drop-shadow(0 0 35px rgba(0, 240, 255, 0.45));
+}
+
+.gradient-text-gold {
+  background: linear-gradient(115deg, #fff3c4 0%, #ffd768 40%, #f59e0b 80%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 35px rgba(255, 215, 104, 0.45));
 }
 
 .section-heading {
@@ -2884,6 +2896,746 @@ main {
   }
 
   .float-chip {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   FUTURISTIC FRONT VIDEO & NEURAL STREAM VIEWPORT
+   ========================================================================== */
+
+.front-video-section {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  z-index: 10;
+}
+
+.front-video-wrapper {
+  position: relative;
+  border-radius: 24px;
+  background: linear-gradient(160deg, rgba(14, 23, 42, 0.92) 0%, rgba(7, 11, 20, 0.98) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.75), 0 0 50px rgba(0, 240, 255, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  transform-style: preserve-3d;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.front-video-wrapper:hover {
+  border-color: rgba(0, 240, 255, 0.55);
+  box-shadow: 0 35px 110px rgba(0, 0, 0, 0.85), 0 0 70px rgba(0, 240, 255, 0.2);
+}
+
+.video-hud-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(5, 8, 17, 0.92);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.18);
+  font-family: var(--font);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hud-rec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff3366;
+  box-shadow: 0 0 10px #ff3366;
+  animation: pulseBeacon 1.2s infinite ease-in-out;
+}
+
+.hud-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-timecode {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cyan);
+  letter-spacing: 0.18em;
+  background: rgba(0, 240, 255, 0.08);
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hud-badge-gold {
+  color: var(--gold-bright);
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 215, 104, 0.4);
+  background: rgba(255, 215, 104, 0.08);
+}
+
+.video-screen-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8.2;
+  min-height: 380px;
+  max-height: 520px;
+  background: #02050b;
+  overflow: hidden;
+}
+
+.front-stream-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.video-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.35) 2px,
+    rgba(0, 0, 0, 0.35) 4px
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.65;
+}
+
+.video-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.video-hud-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.hud-corner-bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--cyan);
+  pointer-events: none;
+}
+
+.hud-corner-bracket.tl { top: 16px; left: 16px; border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.hud-corner-bracket.tr { top: 16px; right: 16px; border-top: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+.hud-corner-bracket.bl { bottom: 16px; left: 16px; border-bottom: 2px solid var(--cyan); border-left: 2px solid var(--cyan); }
+.hud-corner-bracket.br { bottom: 16px; right: 16px; border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan); }
+
+.hud-center-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+
+.hud-center-reticle .hud-reticle-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.5);
+  animation: hudRingSpin 18s linear infinite;
+}
+
+.hud-crosshair-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+}
+
+.hud-crosshair-center::before {
+  content: '';
+  position: absolute;
+  top: 6.5px;
+  left: 0;
+  width: 14px;
+  height: 1px;
+  background: var(--cyan);
+}
+
+.hud-crosshair-center::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 6.5px;
+  width: 1px;
+  height: 14px;
+  background: var(--cyan);
+}
+
+.video-caption-hud {
+  max-width: 520px;
+  pointer-events: auto;
+  background: rgba(5, 8, 17, 0.78);
+  backdrop-filter: blur(14px);
+  padding: 18px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+}
+
+.caption-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+  margin-bottom: 6px;
+}
+
+.video-caption-hud h3 {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.video-caption-hud p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.video-hud-telemetry {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  pointer-events: auto;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.audio-spectrum-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 28px;
+  padding: 6px 12px;
+  background: rgba(5, 8, 17, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}
+
+.audio-spectrum-bars .sb {
+  width: 3.5px;
+  background: linear-gradient(to top, var(--cyan), #38bdf8);
+  border-radius: 1.5px;
+  animation: spectrumBounce 1.4s ease-in-out infinite alternate;
+}
+
+.audio-spectrum-bars .sb:nth-child(1) { height: 8px; animation-delay: 0.1s; }
+.audio-spectrum-bars .sb:nth-child(2) { height: 18px; animation-delay: 0.4s; }
+.audio-spectrum-bars .sb:nth-child(3) { height: 12px; animation-delay: 0.2s; }
+.audio-spectrum-bars .sb:nth-child(4) { height: 24px; animation-delay: 0.6s; }
+.audio-spectrum-bars .sb:nth-child(5) { height: 14px; animation-delay: 0.3s; }
+.audio-spectrum-bars .sb:nth-child(6) { height: 20px; animation-delay: 0.5s; }
+.audio-spectrum-bars .sb:nth-child(7) { height: 10px; animation-delay: 0.25s; }
+.audio-spectrum-bars .sb:nth-child(8) { height: 16px; animation-delay: 0.45s; }
+
+@keyframes spectrumBounce {
+  0% { transform: scaleY(0.4); opacity: 0.6; }
+  50% { transform: scaleY(1.1); opacity: 1; }
+  100% { transform: scaleY(0.5); opacity: 0.7; }
+}
+
+.video-controls-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.v-ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  background: rgba(10, 16, 28, 0.85);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #ffffff;
+  font-family: var(--font);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.v-ctrl-btn:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: var(--cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+
+.v-cta-btn {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+  border-color: #25d366 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.35);
+}
+
+.v-cta-btn:hover {
+  box-shadow: 0 0 30px rgba(37, 211, 102, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   WHATSAPP BUTTONS & FLOATING WIDGET
+   ========================================================================== */
+
+/* Floating WhatsApp Widget */
+.floating-whp-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floating-whp-btn:hover {
+  transform: scale(1.1);
+}
+
+.whp-pulse-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #25d366;
+  opacity: 0.8;
+  animation: whpPulseRing 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+
+.whp-pulse-ring.delay {
+  animation-delay: 1.2s;
+}
+
+@keyframes whpPulseRing {
+  0% { transform: scale(0.9); opacity: 0.9; }
+  70% { transform: scale(1.55); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.whp-btn-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.whp-svg-icon {
+  width: 32px;
+  height: 32px;
+  fill: #ffffff;
+}
+
+.whp-badge-pulse {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #25d366;
+  box-shadow: 0 0 8px #ffffff;
+  animation: pulseBeacon 1.8s infinite ease-in-out;
+}
+
+.whp-tooltip {
+  position: absolute;
+  right: 76px;
+  background: rgba(7, 11, 20, 0.95);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+  padding: 10px 16px;
+  border-radius: 12px;
+  color: #ffffff;
+  width: 230px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  font-family: var(--font);
+}
+
+.floating-whp-btn:hover .whp-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whp-tt-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  margin-bottom: 4px;
+  color: #25d366;
+}
+
+.whp-tt-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0 6px #25d366;
+}
+
+.whp-tt-msg {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+
+/* WhatsApp Buttons in Header & Page */
+.whp-header-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  color: #25d366;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
+}
+
+.whp-header-btn:hover {
+  background: rgba(37, 211, 102, 0.25);
+  border-color: #25d366;
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+  color: #ffffff;
+}
+
+.button-whatsapp {
+  background: rgba(37, 211, 102, 0.14) !important;
+  border: 1px solid rgba(37, 211, 102, 0.45) !important;
+  color: #25d366 !important;
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.15) !important;
+}
+
+.button-whatsapp:hover {
+  background: #25d366 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 35px rgba(37, 211, 102, 0.5) !important;
+}
+
+.button-whatsapp-solid {
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%) !important;
+  border: 1px solid #25d366 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.35) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  padding: 13px 20px !important;
+  border-radius: 12px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.04em !important;
+}
+
+.button-whatsapp-solid:hover {
+  box-shadow: 0 14px 40px rgba(37, 211, 102, 0.6) !important;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CORPORATE CONTACT INFO CARD
+   ========================================================================== */
+
+.corporate-contact-card {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 18px;
+  background: rgba(11, 18, 34, 0.72);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  backdrop-filter: blur(14px);
+}
+
+.c-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.c-info-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.c-info-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-info-body small {
+  font-family: var(--font);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--cyan);
+  margin-bottom: 2px;
+}
+
+.c-info-link {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+
+.c-info-link:hover {
+  color: var(--cyan);
+  text-decoration: underline;
+}
+
+.c-info-text {
+  font-size: 13.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   ENHANCED TEAM 3D ANIMATIONS (DUAL RETICLES, ECG WAVE, EQUALIZER)
+   ========================================================================== */
+
+/* Dual Rotating HUD Reticle Rings */
+.hud-reticle-ring-outer {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.65);
+  animation: hudRingSpin 14s linear infinite;
+}
+
+.team-card-executive .hud-reticle-ring-outer {
+  border-color: rgba(255, 215, 104, 0.75);
+}
+
+.hud-reticle-ring-inner {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px dotted rgba(255, 255, 255, 0.45);
+  animation: hudRingSpinReverse 8s linear infinite;
+}
+
+.team-card-executive .hud-reticle-ring-inner {
+  border-color: rgba(255, 215, 104, 0.5);
+}
+
+@keyframes hudRingSpinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Animated ECG Neural Pulse Heartbeat Line */
+.hud-ecg-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  height: 20px;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.7;
+  overflow: hidden;
+}
+
+.hud-ecg-svg {
+  width: 200%;
+  height: 100%;
+  display: block;
+  animation: ecgTrackSweep 3.2s linear infinite;
+}
+
+.team-card-executive .hud-ecg-svg path {
+  stroke: var(--gold);
+  filter: drop-shadow(0 0 6px var(--gold));
+}
+
+.team-card:not(.team-card-executive) .hud-ecg-svg path {
+  stroke: var(--cyan);
+  filter: drop-shadow(0 0 6px var(--cyan));
+}
+
+@keyframes ecgTrackSweep {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Top Announcement / Phone & Location HUD Header Bar */
+.top-hud-bar {
+  background: rgba(4, 7, 15, 0.94);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+  padding: 6px 24px;
+  font-family: var(--font);
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  letter-spacing: 0.06em;
+  z-index: 101;
+  position: relative;
+}
+
+.top-hud-left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.top-hud-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.top-hud-item b {
+  color: #ffffff;
+}
+
+.top-hud-item a {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.top-hud-item a:hover {
+  text-decoration: underline;
+}
+
+.top-hud-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+/* Mobile Adjustments for Front Video & Floating Button */
+@media (max-width: 768px) {
+  .top-hud-bar {
+    display: none;
+  }
+  
+  .front-video-wrapper {
+    border-radius: 16px;
+  }
+  
+  .video-screen-stage {
+    min-height: 280px;
+  }
+  
+  .video-caption-hud {
+    padding: 14px 16px;
+  }
+  
+  .video-caption-hud h3 {
+    font-size: 18px;
+  }
+  
+  .video-hud-telemetry {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .floating-whp-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 54px;
+    height: 54px;
+  }
+  
+  .whp-tooltip {
     display: none;
   }
 }
