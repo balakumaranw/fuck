@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#070b14" />
+  <meta name="description" content="Business Graph builds modern high-converting websites, autonomous AI automation systems, and high-ROI digital growth campaigns." />
+  <title>Business Graph — Build. Automate. Scale.</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Interactive Futuristic Neural Graph Canvas Background -->
+  <canvas id="graphCanvas" class="futuristic-bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Interactive Mouse Spotlight -->
+  <div id="cursorGlow" class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Ambient Light Fields -->
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <div class="ambient ambient-three"></div>
+
+  <!-- Futuristic Navigation Header -->
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Business Graph home">
+      <div class="brand-logo-container">
+        <img src="assets/logo.png" alt="Business Graph" class="brand-official-logo" />
+      </div>
+    </a>
+
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#services">Services</a>
+      <a href="#system">Our System</a>
+      <a href="#demo">AI Preview</a>
+      <a href="#team">Team</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="button button-small header-cta" href="#contact">
+        <span>Book Consultation</span>
+        <span class="btn-arrow">↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          <span class="eyebrow-text">DIGITAL GROWTH, RE-ENGINEERED</span>
+          <span class="eyebrow-badge">v2.6 ONLINE</span>
+        </div>
+        <h1>Build smarter.<br><span class="gradient-text">Grow faster.</span><br>Go further.</h1>
+        <p class="hero-lead">We unite high-speed web architecture, 24/7 autonomous AI systems, and precision performance marketing — engineered so your business scales with unstoppable momentum.</p>
+        
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contact">
+            <span class="btn-shine"></span>
+            <span>Transform Your Business</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+          <a class="text-link" href="#services">
+            <span>Explore our capabilities</span>
+            <span class="link-arrow">↓</span>
+          </a>
+        </div>
+
+        <div class="trust-line">
+          <div class="avatar-stack">
+            <span class="stack-badge">✦</span>
+            <span class="stack-badge gold">▲</span>
+            <span class="stack-badge">✳</span>
+          </div>
+          <div class="trust-text">
+            <strong>Enterprise-grade digital engine</strong>
+            <span>One connected partner for high-velocity business scaling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO VISUAL: 3D Holographic Logo & Interactive Telemetry Dashboard -->
+      <div class="hero-visual reveal" id="heroVisual">
+        <!-- Floating Holographic Logo Stage -->
+        <div class="holo-stage" id="holoStage">
+          <!-- Cyber Concentric HUD Rings -->
+          <div class="holo-rings" aria-hidden="true">
+            <div class="holo-ring holo-ring-outer"></div>
+            <div class="holo-ring holo-ring-mid"></div>
+            <div class="holo-ring holo-ring-inner"></div>
+            <div class="holo-radar-sweep"></div>
+            <div class="holo-scanner"></div>
+          </div>
+
+          <!-- 3D Suspended Logo Emblem -->
+          <div class="holo-emblem-wrap">
+            <div class="holo-emblem-core">
+              <img src="assets/logo-icon.png" alt="Business Graph 3D Holographic Emblem" class="holo-emblem-img" />
+              <div class="holo-arrow-glow"></div>
+            </div>
+            <div class="holo-pedestal">
+              <div class="pedestal-ring r1"></div>
+              <div class="pedestal-ring r2"></div>
+              <div class="pedestal-beam"></div>
+            </div>
+          </div>
+
+          <!-- Holographic Floating Badges -->
+          <div class="holo-tag holo-tag-left">
+            <span class="tag-pulse"></span>
+            <span>AI ENGINE <b>ONLINE</b></span>
+          </div>
+          <div class="holo-tag holo-tag-right">
+            <span class="tag-arrow">↗</span>
+            <span>GROWTH <b>+340%</b></span>
+          </div>
+        </div>
+
+        <!-- Telemetry Glassmorphism Card -->
+        <div class="dashboard-card" id="dashCard">
+          <div class="dash-glow-border" aria-hidden="true"></div>
+          <div class="dash-top">
+            <span class="dash-sys-status"><i class="live-dot"></i> TELEMETRY / LIVE FEED</span>
+            <span class="dash-status-pill"><span class="status-dot"></span> OPTIMAL</span>
+          </div>
+
+          <div class="dash-heading-row">
+            <div>
+              <div class="dash-title">Unified Growth Engine</div>
+              <div class="dash-sub">Autonomous operations & continuous scaling</div>
+            </div>
+            <div class="dash-mini-badge" title="Business Graph Core">
+              <img src="assets/logo-icon.png" alt="Mark" />
+            </div>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <div class="metric-header">
+                <span>Web Architecture</span>
+                <span class="metric-indicator online"></span>
+              </div>
+              <strong><span class="counter" data-target="99.9" data-suffix="%">99.9%</span><span class="metric-check"> ↗</span></strong>
+              <small>Sub-second conversion speed</small>
+            </div>
+            <div class="metric">
+              <div class="metric-header">
+                <span>AI Autonomous</span>
+                <span class="metric-indicator ai"></span>
+              </div>
+              <strong><span class="counter" data-target="24" data-suffix="/7">24/7</span></strong>
+              <small>&lt;0.2s instant response</small>
+            </div>
+            <div class="metric">
+              <div class="metric-header">
+                <span>Paid Growth</span>
+                <span class="metric-indicator ads"></span>
+              </div>
+              <strong><span class="counter" data-target="4.8" data-suffix="x">4.8x</span></strong>
+              <small>Targeted ROI scale</small>
+            </div>
+            <div class="metric">
+              <div class="metric-header">
+                <span>Scale Index</span>
+                <span class="metric-indicator gold"></span>
+              </div>
+              <strong><span class="counter" data-target="340" data-prefix="+" data-suffix="%">+340%</span></strong>
+              <small>Compound velocity</small>
+            </div>
+          </div>
+
+          <!-- Dynamic Growth Chart -->
+          <div class="chart-panel">
+            <div class="chart-heading">
+              <span>Growth Trajectory · Real-Time Index</span>
+              <span class="chart-tag"><i class="radar-ping"></i> ACCELERATING</span>
+            </div>
+            <div class="chart-wrapper">
+              <svg class="chart" viewBox="0 0 440 112" preserveAspectRatio="none" aria-label="Illustrative upward trend chart">
+                <defs>
+                  <linearGradient id="areaGrad" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0%" stop-color="#39d9ed" stop-opacity="0.35"/>
+                    <stop offset="60%" stop-color="#f0be42" stop-opacity="0.12"/>
+                    <stop offset="100%" stop-color="#39d9ed" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="strokeGrad" x1="0" x2="1" y1="0" y2="0">
+                    <stop offset="0%" stop-color="#39d9ed"/>
+                    <stop offset="50%" stop-color="#70a6ff"/>
+                    <stop offset="100%" stop-color="#f0be42"/>
+                  </linearGradient>
+                  <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                  </filter>
+                </defs>
+                <!-- Area fill -->
+                <path class="chart-area" d="M0 90 C40 82 48 94 82 72 S130 78 160 58 S210 72 245 42 S300 57 330 30 S390 40 440 8 V112 H0Z" fill="url(#areaGrad)"/>
+                <!-- Background glow line -->
+                <path class="chart-glow-line" d="M0 90 C40 82 48 94 82 72 S130 78 160 58 S210 72 245 42 S300 57 330 30 S390 40 440 8" fill="none" stroke="url(#strokeGrad)" stroke-width="6" opacity="0.45" filter="url(#neonGlow)"/>
+                <!-- Primary sharp line -->
+                <path class="chart-main-line" d="M0 90 C40 82 48 94 82 72 S130 78 160 58 S210 72 245 42 S300 57 330 30 S390 40 440 8" fill="none" stroke="url(#strokeGrad)" stroke-width="3" stroke-linecap="round"/>
+                <!-- Pulse target at apex -->
+                <circle cx="440" cy="8" r="4.5" fill="#f0be42" class="chart-apex"/>
+                <circle cx="440" cy="8" r="9" fill="none" stroke="#f0be42" stroke-width="1.5" class="chart-apex-ring"/>
+              </svg>
+            </div>
+            <div class="chart-labels">
+              <span>PLAN</span>
+              <span>BUILD</span>
+              <span>AUTOMATE</span>
+              <span class="scale-label">SCALE ↗</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating High-Tech Chips -->
+        <div class="float-chip chip-ai">
+          <span class="chip-symbol">✳</span>
+          <div>
+            <b>AI Autonomous Systems</b>
+            <small>Lead qualification & routing</small>
+          </div>
+        </div>
+        <div class="float-chip chip-web">
+          <span class="chip-symbol">⌘</span>
+          <div>
+            <b>Digital Infrastructure</b>
+            <small>High-performance conversion web</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HIGH-TECH MARQUEE LOGO STRIP -->
+    <section class="logo-strip">
+      <div class="strip-label">
+        <span class="radar-ping"></span>
+        <span>THE BUSINESS GRAPH ECOSYSTEM · POWERING MODERN COMMERCE</span>
+      </div>
+      <div class="marquee-track" aria-hidden="true">
+        <div class="marquee-content">
+          <span><i class="m-dot">◈</i> MODERN WEB ARCHITECTURE</span>
+          <span><i class="m-dot gold">✳</i> 24/7 AI AUTOMATION SYSTEMS</span>
+          <span><i class="m-dot">⌁</i> HIGH-ROI META AD CAMPAIGNS</span>
+          <span><i class="m-dot gold">⟡</i> BUSINESS GROWTH INFRASTRUCTURE</span>
+          <span><i class="m-dot">⌘</i> CRM & WORKFLOW INTEGRATIONS</span>
+          <span><i class="m-dot gold">▲</i> HIGH-VELOCITY SCALING</span>
+          <!-- Duplicate for seamless infinite loop -->
+          <span><i class="m-dot">◈</i> MODERN WEB ARCHITECTURE</span>
+          <span><i class="m-dot gold">✳</i> 24/7 AI AUTOMATION SYSTEMS</span>
+          <span><i class="m-dot">⌁</i> HIGH-ROI META AD CAMPAIGNS</span>
+          <span><i class="m-dot gold">⟡</i> BUSINESS GROWTH INFRASTRUCTURE</span>
+          <span><i class="m-dot">⌘</i> CRM & WORKFLOW INTEGRATIONS</span>
+          <span><i class="m-dot gold">▲</i> HIGH-VELOCITY SCALING</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section-wrap section-block" id="services">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            <span>WHAT WE DELIVER</span>
+          </div>
+          <h2>Everything working<br><span class="gradient-text">better together.</span></h2>
+        </div>
+        <p>From the first click to autonomous customer acquisition and automated retention, we engineer the interconnected digital ecosystem that propels your business upward.</p>
+      </div>
+
+      <div class="service-grid">
+        <article class="service-card reveal" data-tilt>
+          <div class="card-glow-overlay" aria-hidden="true"></div>
+          <div class="service-icon">◈</div>
+          <span class="card-index">01 / DIGITAL FOUNDATION</span>
+          <h3>Modern Web Creation</h3>
+          <p>Ultra-fast, beautifully responsive websites crafted with DM Sans & Space Grotesk precision, seamless mobile UX, and high-conversion pathways.</p>
+          <a href="#contact" class="card-link">Build your presence <span>↗</span></a>
+        </article>
+
+        <article class="service-card reveal" data-tilt>
+          <div class="card-glow-overlay" aria-hidden="true"></div>
+          <div class="service-icon gold-icon">✳</div>
+          <span class="card-index">02 / INTELLIGENT SYSTEMS</span>
+          <h3>Custom AI Integration</h3>
+          <p>Autonomous AI assistants and multi-step workflows that instantly engage inbound enquiries, qualify warm leads, and sync with your business CRM 24/7.</p>
+          <a href="#contact" class="card-link">Explore automation <span>↗</span></a>
+        </article>
+
+        <article class="service-card reveal" data-tilt>
+          <div class="card-glow-overlay" aria-hidden="true"></div>
+          <div class="service-icon">⌁</div>
+          <span class="card-index">03 / PAID GROWTH</span>
+          <h3>Meta Ad Campaigns</h3>
+          <p>Data-driven Facebook & Instagram funnels, rapid creative testing frameworks, and relentless attribution tracking engineered to maximize return on ad spend.</p>
+          <a href="#contact" class="card-link">Grow your reach <span>↗</span></a>
+        </article>
+
+        <article class="service-card reveal" data-tilt>
+          <div class="card-glow-overlay" aria-hidden="true"></div>
+          <div class="service-icon gold-icon">⟡</div>
+          <span class="card-index">04 / CONTINUOUS SCALE</span>
+          <h3>Business Management</h3>
+          <p>Dedicated technical partnership, ongoing web optimization, proactive security updates, performance analytics, and strategic scaling guidance.</p>
+          <a href="#contact" class="card-link">Partner with us <span>↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- OUR SYSTEM SECTION -->
+    <section class="system-section" id="system">
+      <div class="section-wrap section-block">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">
+              <span class="pulse-dot"></span>
+              <span>THE 4-STAGE PIPELINE</span>
+            </div>
+            <h2>A clear path from<br><span class="gradient-text">idea to impact.</span></h2>
+          </div>
+          <p>Our four-stage pipeline keeps every phase of your digital evolution transparent, synchronized, and relentlessly moving toward measurable ROI.</p>
+        </div>
+
+        <div class="steps">
+          <article class="step reveal">
+            <div class="step-num-wrap">
+              <span class="step-number">01</span>
+              <span class="step-badge">STAGE 1</span>
+            </div>
+            <div class="step-line"><span class="step-tracer"></span></div>
+            <h3>Discover & Build</h3>
+            <p>We analyze your business model, map high-intent customer journeys, and engineer a lightning-fast digital foundation.</p>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num-wrap">
+              <span class="step-number">02</span>
+              <span class="step-badge">STAGE 2</span>
+            </div>
+            <div class="step-line"><span class="step-tracer"></span></div>
+            <h3>Automate & Connect</h3>
+            <p>We configure custom AI assistants, automated pipeline triggers, and instant CRM sync tailored precisely to your operational workflow.</p>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num-wrap">
+              <span class="step-number">03</span>
+              <span class="step-badge">STAGE 3</span>
+            </div>
+            <div class="step-line"><span class="step-tracer"></span></div>
+            <h3>Launch & Attract</h3>
+            <p>We launch high-impact paid campaigns across Meta, laser-targeting your ideal customers with persuasive creative copy.</p>
+          </article>
+
+          <article class="step reveal">
+            <div class="step-num-wrap">
+              <span class="step-number">04</span>
+              <span class="step-badge gold-badge">STAGE 4</span>
+            </div>
+            <div class="step-line"><span class="step-tracer gold-tracer"></span></div>
+            <h3>Measure & Scale</h3>
+            <p>We audit conversion funnels, identify untapped growth leverage, and continuously iterate to compound revenue.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI DEMO INTERACTIVE PREVIEW -->
+    <section class="section-wrap section-block demo-section" id="demo">
+      <div class="demo-copy reveal">
+        <div class="eyebrow">
+          <span class="pulse-dot"></span>
+          <span>INTERACTIVE PREVIEW</span>
+        </div>
+        <h2>Make every enquiry<br><span class="gradient-text">convert instantly.</span></h2>
+        <p>Experience how our custom AI automation answers customer questions with zero delay, captures qualified leads, and books appointments around the clock.</p>
+        <div class="demo-features">
+          <div class="feat-item"><span class="feat-icon">⚡</span> <span>Sub-second intelligent response</span></div>
+          <div class="feat-item"><span class="feat-icon">🔒</span> <span>Custom business knowledge base</span></div>
+          <div class="feat-item"><span class="feat-icon">↗</span> <span>Automated CRM lead routing</span></div>
+        </div>
+        <a href="#contact" class="button button-secondary">
+          <span>Deploy an AI Agent For Your Business</span>
+          <span class="btn-arrow">↗</span>
+        </a>
+      </div>
+
+      <div class="chat-window reveal" id="chatWindow">
+        <div class="chat-header">
+          <div class="bot-avatar">
+            <img src="assets/logo-icon.png" alt="AI Agent" class="bot-avatar-img" />
+            <span class="bot-online-ring"></span>
+          </div>
+          <div class="bot-meta">
+            <b>Business Graph AI Agent</b>
+            <small><i class="live-dot"></i> Neural Mode · Sub-second response</small>
+          </div>
+          <button class="chat-reset-btn" id="chatResetBtn" title="Restart conversation">↺ Reset</button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+          <div class="chat-message bot">
+            <div class="msg-content">
+              Hello! 👋 Welcome to Business Graph. I am your autonomous growth assistant. What can I help you build today?
+            </div>
+            <span class="msg-time">Just now</span>
+          </div>
+
+          <div class="chat-choices" id="chatChoices">
+            <button data-reply="I need a modern website for my business.">🌐 Build a Website</button>
+            <button data-reply="I want 24/7 AI automation for customer enquiries.">⚡ Automate with AI</button>
+            <button data-reply="I need to scale with targeted Meta Ads.">📈 Meta Ads Growth</button>
+            <button data-reply="Can you explain your end-to-end pricing?">💰 Custom Pricing</button>
+          </div>
+        </div>
+
+        <div class="chat-input-mock">
+          <input type="text" id="chatInputMock" placeholder="Type a message or click an option above..." />
+          <button id="chatSendMock" aria-label="Send message">↗</button>
+        </div>
+
+        <div class="chat-note">
+          <span>✳ Interactive demonstration powered by Business Graph design architecture.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section class="team-section" id="team">
+      <div class="section-wrap section-block">
+        <div class="section-heading reveal">
+          <div>
+            <div class="eyebrow">
+              <span class="pulse-dot"></span>
+              <span>THE LEADERSHIP & ARCHITECTS</span>
+            </div>
+            <h2>Built by people.<br><span class="gradient-text">Driven by vision.</span></h2>
+          </div>
+          <p>A specialized coalition of engineers, automation architects, and growth strategists dedicated to engineering your business scale.</p>
+        </div>
+
+        <!-- TIER 1: EXECUTIVE LEADERSHIP (FOUNDERS) -->
+        <div class="team-tier-heading reveal">
+          <span class="tier-badge gold-tier"><i class="radar-ping"></i> EXECUTIVE LEADERSHIP</span>
+          <div class="tier-divider"></div>
+        </div>
+
+        <div class="team-grid founders-grid">
+          <!-- Founder: Balakumaran -->
+          <article class="team-card team-card-executive reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow gold-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/balakumaran.jpg" alt="Balakumaran — Founder" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag gold-tag">
+                <span class="tag-ping gold-ping"></span>
+                <span>FOUNDER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>Balakumaran</h3>
+                <span class="executive-symbol">✦</span>
+              </div>
+              <span class="team-role-sub">Digital Strategy & Systems Architecture</span>
+              <p class="team-bio">Spearheading digital business transformation, conversion architecture, and high-velocity digital growth strategy.</p>
+              <div class="team-tags">
+                <span>✦ Systems Strategy</span>
+                <span>✦ Growth Architecture</span>
+                <span>✦ Core Lead</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Co-Founder: Nagaraj -->
+          <article class="team-card team-card-executive reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow gold-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/nagaraj.jpg" alt="Nagaraj — Co-Founder" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag gold-tag">
+                <span class="tag-ping gold-ping"></span>
+                <span>CO-FOUNDER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>Nagaraj</h3>
+                <span class="executive-symbol">✦</span>
+              </div>
+              <span class="team-role-sub">Operations & Technical Infrastructure</span>
+              <p class="team-bio">Orchestrating technical operations, delivery pipelines, cloud infrastructure, and partner client success.</p>
+              <div class="team-tags">
+                <span>✦ Operations Lead</span>
+                <span>✦ Infrastructure</span>
+                <span>✦ Client Scale</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- TIER 2: TECHNOLOGY & GROWTH PARTNERS -->
+        <div class="team-tier-heading reveal" style="margin-top: 50px;">
+          <span class="tier-badge cyan-tier"><i class="radar-ping cyan-ping"></i> TECHNOLOGY & GROWTH PARTNERS</span>
+          <div class="tier-divider"></div>
+        </div>
+
+        <div class="team-grid partners-grid">
+          <!-- M. Dharaneshwaran -->
+          <article class="team-card reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow cyan-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/dharaneshwaran.jpg" alt="M. Dharaneshwaran — Partner" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag cyan-tag">
+                <span class="tag-ping cyan-ping"></span>
+                <span>PARTNER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>M. Dharaneshwaran</h3>
+              </div>
+              <span class="team-role-sub">Frontend Engineering & UI/UX</span>
+              <p class="team-bio">Crafting modern high-converting interfaces, micro-animations, and fluid responsive design systems.</p>
+              <div class="team-tags">
+                <span>✦ Frontend UX</span>
+                <span>✦ Interface Design</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- K.S. Kavin -->
+          <article class="team-card reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow cyan-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/kavin.jpg" alt="K.S. Kavin — Partner" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag cyan-tag">
+                <span class="tag-ping cyan-ping"></span>
+                <span>PARTNER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>K.S. Kavin</h3>
+              </div>
+              <span class="team-role-sub">AI Automation & Autonomous Bots</span>
+              <p class="team-bio">Architecting intelligent multi-step conversational workflows, API webhooks, and 24/7 lead routing systems.</p>
+              <div class="team-tags">
+                <span>✦ AI Automation</span>
+                <span>✦ Workflow Bots</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- S. Vetrivel -->
+          <article class="team-card reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow cyan-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/vetrivel.jpg" alt="S. Vetrivel — Partner" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag cyan-tag">
+                <span class="tag-ping cyan-ping"></span>
+                <span>PARTNER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>S. Vetrivel</h3>
+              </div>
+              <span class="team-role-sub">Paid Growth & Meta Ads</span>
+              <p class="team-bio">Scaling high-ROI customer acquisition campaigns on Meta with targeted audience funnels and creative testing.</p>
+              <div class="team-tags">
+                <span>✦ Meta Ads</span>
+                <span>✦ Paid Growth</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- J. Barath -->
+          <article class="team-card reveal" data-tilt>
+            <div class="card-glare" aria-hidden="true"></div>
+            <div class="team-photo-stage">
+              <div class="photo-glow cyan-glow" aria-hidden="true"></div>
+              <div class="photo-frame">
+                <img src="assets/team/barath.jpg" alt="J. Barath — Partner" class="team-photo" />
+                <div class="photo-overlay"></div>
+                <span class="cyber-corner tl"></span>
+                <span class="cyber-corner tr"></span>
+                <span class="cyber-corner bl"></span>
+                <span class="cyber-corner br"></span>
+              </div>
+              <div class="team-status-tag cyan-tag">
+                <span class="tag-ping cyan-ping"></span>
+                <span>PARTNER</span>
+              </div>
+            </div>
+            <div class="team-info">
+              <div class="team-title-row">
+                <h3>J. Barath</h3>
+              </div>
+              <span class="team-role-sub">Data Intelligence & Telemetry</span>
+              <p class="team-bio">Monitoring conversion telemetry, tracking ROI data pipelines, and optimizing ongoing system scale.</p>
+              <div class="team-tags">
+                <span>✦ Telemetry</span>
+                <span>✦ Analytics</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING & PARTNERSHIP SECTION -->
+    <section class="section-wrap section-block" id="pricing">
+      <div class="pricing-panel reveal" data-tilt>
+        <div class="pricing-copy">
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            <span>TAILORED PARTNERSHIPS</span>
+          </div>
+          <h2>Your ambitions.<br><span class="gradient-text">A system that fits.</span></h2>
+          <p>Every growing business possesses distinct operational needs. We don't force rigid templates — we engineer a bespoke scope aligned with your immediate goals, timeline, and ROI benchmarks.</p>
+          <div class="pricing-checks">
+            <div class="p-check"><span>✔</span> Custom engineered architecture</div>
+            <div class="p-check"><span>✔</span> Direct partner access & dedicated support</div>
+            <div class="p-check"><span>✔</span> Full intellectual property ownership</div>
+          </div>
+        </div>
+
+        <div class="pricing-side">
+          <div class="pricing-tag">
+            <span class="radar-ping"></span>
+            <span>CUSTOM ENGAGEMENT</span>
+          </div>
+          <h3>Custom Project Scopes</h3>
+          <p>High-speed web platforms · Autonomous AI workflows · Meta Ads acceleration · Continuous management</p>
+          <a class="button button-primary" href="#contact">
+            <span>Request a Tailored Proposal</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+          <small class="pricing-note">We conduct an in-depth discovery session prior to finalizing deliverables and investment scope.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section" id="contact">
+      <div class="section-wrap section-block contact-layout">
+        <div class="contact-copy reveal">
+          <div class="eyebrow">
+            <span class="pulse-dot"></span>
+            <span>LET'S BUILD SOMETHING EXTRAORDINARY</span>
+          </div>
+          <h2>Ready to move<br><span class="gradient-text">your business forward?</span></h2>
+          <p>Tell us where you want your business to be. We'll examine your digital landscape and present an actionable blueprint for high-velocity growth.</p>
+          
+          <div class="contact-points">
+            <div class="c-point">
+              <span class="c-icon">✳</span>
+              <div>
+                <strong>A focused discovery session</strong>
+                <p>We uncover bottlenecks and explore automation opportunities.</p>
+              </div>
+            </div>
+            <div class="c-point">
+              <span class="c-icon gold">▲</span>
+              <div>
+                <strong>Bespoke scaling blueprint</strong>
+                <p>Tailored strategies that combine web, AI, and marketing.</p>
+              </div>
+            </div>
+            <div class="c-point">
+              <span class="c-icon">◈</span>
+              <div>
+                <strong>Transparent proposal</strong>
+                <p>Clear timelines, defined milestones, and straightforward pricing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="form-glow-border" aria-hidden="true"></div>
+          <div class="form-heading">
+            <h3>Start a conversation</h3>
+            <span>Fill out the form below — we'll reply within 24 hours.</span>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Your Name *
+              <input name="name" placeholder="Balakumaran" required />
+            </label>
+            <label>
+              Business Name
+              <input name="business" placeholder="Acme Technologies" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label>
+              Email Address *
+              <input type="email" name="email" placeholder="you@company.com" required />
+            </label>
+            <label>
+              Phone Number
+              <input type="tel" name="phone" placeholder="+91 98765 43210" />
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>What capabilities do you need?</legend>
+            <div class="checkbox-grid">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="services" value="Website Creation" checked />
+                <span class="check-box"></span>
+                <span>Modern Website</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="services" value="AI Automation" checked />
+                <span class="check-box"></span>
+                <span>AI Automation</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="services" value="Meta Ads" />
+                <span class="check-box"></span>
+                <span>Meta Ad Campaigns</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="services" value="Continuous Management" />
+                <span class="check-box"></span>
+                <span>Ongoing Scaling</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <label>
+            Your Message / Project Goals
+            <textarea name="message" rows="4" placeholder="Briefly describe your current business model, your growth goals, or any questions you have..."></textarea>
+          </label>
+
+          <button class="button button-primary submit-button" type="submit">
+            <span class="btn-shine"></span>
+            <span>Send Project Enquiry</span>
+            <span class="btn-arrow">↗</span>
+          </button>
+
+          <p class="form-status" id="formStatus" aria-live="polite">Your email client will open with your enquiry prepared.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="section-wrap footer-main">
+      <div class="footer-brand-col">
+        <a class="brand" href="#home">
+          <div class="brand-logo-container">
+            <img src="assets/logo.png" alt="Business Graph" class="brand-official-logo" />
+          </div>
+        </a>
+        <p class="footer-mission">Architecting digital foundations, autonomous AI systems, and compound growth funnels for visionary enterprises.</p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#services">Services</a>
+          <a href="#system">Our System</a>
+          <a href="#demo">AI Preview</a>
+          <a href="#team">Team</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-status-col">
+        <h4>System Status</h4>
+        <div class="sys-status-badge">
+          <span class="sys-pulse-green"></span>
+          <div>
+            <strong>ALL PLATFORMS OPERATIONAL</strong>
+            <small>Latency: 14ms · Global Edge Active</small>
+          </div>
+        </div>
+        <div class="footer-tagline">
+          <span>Engineered for what's next.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-wrap footer-bottom">
+      <span>© <span id="year">2026</span> Business Graph. All rights reserved.</span>
+      <span class="footer-credit">Built with precision. <b class="brand-gold">✦</b> Scale continuously.</span>
+      <a href="#home" class="back-to-top" aria-label="Back to top">
+        <span>TOP</span>
+        <span class="top-arrow">↑</span>
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
