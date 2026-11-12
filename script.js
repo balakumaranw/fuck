@@ -385,89 +385,85 @@ function initCursorGlow() {
    ========================================================================== */
 
 function init3DTilt() {
-  // Disable ALL tilt on touch/mobile devices — prevents drag issues
-  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 1024);
-  if (isTouchDevice) {
-    // On mobile: remove data-tilt attributes and reset any transforms
-    document.querySelectorAll('[data-tilt]').forEach(el => {
-      el.removeAttribute('data-tilt');
-      el.style.transform = '';
-      el.style.willChange = 'auto';
-    });
-    return; // Exit — no tilt on mobile
-  }
-
-  const tiltCards = document.querySelectorAll('[data-tilt]');
-  const holoStage = document.getElementById('holoStage');
+  const tiltCards = document.querySelectorAll('.team-card-3d, .service-card, [data-tilt]');
   const dashCard = document.getElementById('dashCard');
 
-  // Generic 3D tilt with multi-layered parallax depth and specular reflection
+  // Realistic 3D Perspective Tilt on Mouse Movement
   tiltCards.forEach(card => {
-    const glare = card.querySelector('.card-glare');
+    const glare = card.querySelector('.card-3d-glare') || card.querySelector('.card-glare');
     const photoStage = card.querySelector('.team-photo-stage');
-    const reticle = card.querySelector('.hud-reticle');
-    const telem = card.querySelector('.photo-telemetry');
     const statusTag = card.querySelector('.team-status-tag');
+    let isHovered = false;
+
+    card.addEventListener('mouseenter', () => {
+      isHovered = true;
+      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.15s ease-out';
+    });
 
     card.addEventListener('mousemove', e => {
+      if (!isHovered) return;
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -10;
-      const rotateY = ((x - centerX) / centerX) * 10;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
 
-      card.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+      // Limit tilt angle between -12 and +12 degrees for realistic physics
+      const rotX = ((y - cy) / cy) * -11;
+      const rotY = ((x - cx) / cx) * 11;
+
+      card.style.transform = `perspective(1200px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-8px)`;
+      card.style.boxShadow = `${(-rotY * 1.5).toFixed(1)}px ${(rotX * 1.5 + 20).toFixed(1)}px 42px -10px rgba(37, 99, 235, 0.22), 0 10px 20px -5px rgba(15, 23, 42, 0.08)`;
 
       if (glare) {
         glare.style.opacity = '1';
-        glare.style.background = `radial-gradient(circle 240px at ${x}px ${y}px, rgba(255, 255, 255, 0.18) 0%, transparent 65%)`;
-      }
-      if (reticle) {
-        reticle.style.transform = `translateZ(46px) translate(${rotateY * 0.8}px, ${-rotateX * 0.8}px) scale(1.15)`;
+        glare.style.background = `radial-gradient(circle 280px at ${x}px ${y}px, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 40%, transparent 70%)`;
       }
       if (photoStage) {
-        photoStage.style.transform = `translateZ(38px)`;
+        photoStage.style.transform = `translateZ(28px)`;
       }
       if (statusTag) {
-        statusTag.style.transform = `translateZ(60px) translate(${rotateY * 0.5}px, ${-rotateX * 0.5}px)`;
-      }
-      if (telem) {
-        telem.style.transform = `translateZ(42px) translate(${rotateY * 0.4}px, 0px)`;
+        statusTag.style.transform = `translateZ(50px) translate(${(rotY * 0.4).toFixed(1)}px, ${(-rotX * 0.4).toFixed(1)}px)`;
       }
     });
 
     card.addEventListener('mouseleave', () => {
+      isHovered = false;
+      card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease-out';
       card.style.transform = '';
+      card.style.boxShadow = '';
       if (glare) glare.style.opacity = '0';
-      if (reticle) reticle.style.transform = '';
       if (photoStage) photoStage.style.transform = '';
       if (statusTag) statusTag.style.transform = '';
-      if (telem) telem.style.transform = '';
     });
   });
 
-  // Hero visual holographic stage tilt tracking
+  // Hero Dashboard Card 3D Tilt
   const heroVisual = document.getElementById('heroVisual');
-  if (heroVisual) {
+  if (heroVisual && dashCard) {
     heroVisual.addEventListener('mousemove', e => {
       const rect = heroVisual.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-      if (holoStage) {
-        holoStage.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 16}deg)`;
-      }
-      if (dashCard) {
-        dashCard.style.transform = `perspective(1000px) rotateY(${x * 10 - 4}deg) rotateX(${-y * 10 + 2}deg)`;
-      }
+      dashCard.style.transform = `perspective(1200px) rotateY(${(x * 12).toFixed(1)}deg) rotateX(${(-y * 12).toFixed(1)}deg)`;
     });
 
     heroVisual.addEventListener('mouseleave', () => {
-      if (holoStage) holoStage.style.transform = '';
-      if (dashCard) dashCard.style.transform = 'perspective(1000px) rotateY(-4deg) rotateX(2deg)';
+      dashCard.style.transform = '';
     });
+  }
+
+  // Device Orientation 3D Gyroscope for Mobile / Tablets
+  if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+    window.addEventListener('deviceorientation', e => {
+      if (e.beta === null || e.gamma === null) return;
+      const gamma = Math.min(20, Math.max(-20, e.gamma)); // Left to right
+      const beta = Math.min(20, Math.max(-20, e.beta - 45)); // Front to back
+      const executiveCards = document.querySelectorAll('.team-card-executive');
+      executiveCards.forEach(c => {
+        c.style.transform = `perspective(1000px) rotateX(${(-beta * 0.4).toFixed(1)}deg) rotateY(${(gamma * 0.4).toFixed(1)}deg)`;
+      });
+    }, { passive: true });
   }
 }
 
